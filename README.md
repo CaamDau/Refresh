@@ -16,7 +16,9 @@ CaamDau is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'CaamDau/MJRefresh'
+pod 'CaamDauRefresh'
+
+pod 'CaamDau/Refresh'
 ```
 > MJRefresh 普通扩展，使用更方便
 #### 设置全局统一样式
