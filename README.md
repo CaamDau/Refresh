@@ -23,14 +23,14 @@ pod 'CaamDau/Refresh'
 > MJRefresh 普通扩展，使用更方便
 #### 设置全局统一样式
 ```ruby
-MJRefresh.shared.model.up_imgIdle = [...]
+Refresh.shared.model.up_imgIdle = [...]
 ```
 
 #### 单独页面设置样式
 ```ruby
     // 当然 mode 可以置于ViewModel中，或设置全局方法
-    lazy var modelMj:MJRefreshModel = {
-        var m = MJRefreshModel()
+    lazy var modelMj:RefreshModel = {
+        var m = RefreshModel()
         let ass = Assets()
         let arr = [ass.refresh_0,
                    ass.refresh_1,

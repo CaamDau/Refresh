@@ -78,7 +78,7 @@ public extension CaamDau where Base: MJRefreshBackStateFooter {
                   font:UIFont = UIFont.systemFont(ofSize: 14),
                   color:UIColor = UIColor.cd_hex("d3", dark: "f0"),
                   inset:CGFloat = 0,
-                  title:[MJRefreshModel.TitlesEnum] = [.idle(""),
+                  title:[RefreshModel.TitlesEnum] = [.idle(""),
                                                           .pulling(""),
                                                           .refreshing(""),
                                                           .willRefresh(""),
@@ -117,7 +117,7 @@ public extension CaamDau where Base: MJRefreshAutoStateFooter {
                   font:UIFont = UIFont.systemFont(ofSize: 14),
                   color:UIColor = UIColor.cd_hex("d3", dark: "f0"),
                   inset:CGFloat = 0,
-                  title:[MJRefreshModel.TitlesEnum] = [.idle(""),
+                  title:[RefreshModel.TitlesEnum] = [.idle(""),
                                                           .pulling(""),
                                                           .refreshing(""),
                                                           .willRefresh(""),
@@ -153,7 +153,7 @@ public extension CaamDau where Base: MJRefreshAutoStateFooter {
 public extension CaamDau where Base: MJRefreshBackGifFooter {
     /// 设置时间
     @discardableResult
-    func setImages(_ images:[MJRefreshModel.ImagesEnum] = [.idle([]),
+    func setImages(_ images:[RefreshModel.ImagesEnum] = [.idle([]),
                                                               .pulling([]),
                                                               .willRefresh([]),
                                                               .refreshing([]),
@@ -182,7 +182,7 @@ public extension CaamDau where Base: MJRefreshBackGifFooter {
 public extension CaamDau where Base: MJRefreshAutoGifFooter {
     /// 设置时间
     @discardableResult
-    func setImages(_ images:[MJRefreshModel.ImagesEnum] = [.idle([]),
+    func setImages(_ images:[RefreshModel.ImagesEnum] = [.idle([]),
                                                               .pulling([]),
                                                               .willRefresh([]),
                                                               .refreshing([]),
