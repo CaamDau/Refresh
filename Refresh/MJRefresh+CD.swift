@@ -1,7 +1,7 @@
 //Created  on 2018/11/5  by LCD :https://github.com/liucaide .
 
 /******* 模块文档
- * 1，CD_MJRefresh 单例 用于全局自定义刷新样式
+ * 1，MJRefresh 单例 用于全局自定义刷新样式
  * 2，如果全局使用 MJRefreshHeader+CD 中 扩展样式 继可不比使用单例，节省一个单例资源
  * 1，2，即如 headerMJWithModel # headerMJ 的区别
  */
@@ -18,14 +18,14 @@ public extension CaamDau where Base: UIScrollView {
     //MARK:--- 下拉 ----------
     /// 添加默认下拉 - 添加自定义模型 block 回调 custom 自定义
     @discardableResult
-    func headerMJWithModel(_ block:@escaping MJRefreshComponentRefreshingBlock, model:CD_MJRefreshModel = CD_MJRefresh.shared.model, custom:((MJRefreshNormalHeader?)->Void)? = nil) -> CaamDau {
+    func headerMJWithModel(_ block:@escaping MJRefreshComponentRefreshingBlock, model:MJRefreshModel = MJRefresh.shared.model, custom:((MJRefreshNormalHeader?)->Void)? = nil) -> CaamDau {
         let mj = MJRefreshNormalHeader(refreshingBlock: block)
         self.header(normal:mj, model: model)
         custom?(mj)
         base.mj_header = mj
         return self
     }
-    /// 添加默认下拉 - 不添加自定义模型，使用默认，不加载CD_MJRefresh单例
+    /// 添加默认下拉 - 不添加自定义模型，使用默认，不加载MJRefresh单例
     @discardableResult
     func headerMJ(_ block:@escaping MJRefreshComponentRefreshingBlock, custom:((MJRefreshNormalHeader?)->Void)? = nil) -> CaamDau {
         let mj = MJRefreshNormalHeader(refreshingBlock: block)
@@ -36,14 +36,14 @@ public extension CaamDau where Base: UIScrollView {
     }
     /// 添加Gif下拉
     @discardableResult
-    func headerMJGifWithModel( _ block:@escaping MJRefreshComponentRefreshingBlock, model:CD_MJRefreshModel = CD_MJRefresh.shared.model, custom:((MJRefreshGifHeader?)->Void)? = nil) -> CaamDau {
+    func headerMJGifWithModel( _ block:@escaping MJRefreshComponentRefreshingBlock, model:MJRefreshModel = MJRefresh.shared.model, custom:((MJRefreshGifHeader?)->Void)? = nil) -> CaamDau {
         let mj = MJRefreshGifHeader(refreshingBlock: block)
         self.headerGif(mj, model: model)
         custom?(mj)
         base.mj_header = mj
         return self
     }
-    /// 添加Gif下拉 - 不添加自定义模型，使用默认，不加载CD_MJRefresh单例
+    /// 添加Gif下拉 - 不添加自定义模型，使用默认，不加载MJRefresh单例
     @discardableResult
     func headerMJGif( _ block:@escaping MJRefreshComponentRefreshingBlock, custom:((MJRefreshGifHeader?)->Void)? = nil) -> CaamDau {
         let mj = MJRefreshGifHeader(refreshingBlock: block)
@@ -52,7 +52,7 @@ public extension CaamDau where Base: UIScrollView {
         base.mj_header = mj
         return self
     }
-    private func header(normal mj: MJRefreshNormalHeader?, model:CD_MJRefreshModel?) {
+    private func header(normal mj: MJRefreshNormalHeader?, model:MJRefreshModel?) {
         guard let m = model  else {
             mj?.cd.activityStyle().setTitle().setTime()
             return
@@ -63,7 +63,7 @@ public extension CaamDau where Base: UIScrollView {
         self.header(mj, m: m)
     }
     
-    private func header(_ mj: MJRefreshStateHeader?, m:CD_MJRefreshModel) {
+    private func header(_ mj: MJRefreshStateHeader?, m:MJRefreshModel) {
         mj?.cd
             .setTitle(isHidden: m.down_txtHidden,
                       font: m.down_txtFont,
@@ -81,7 +81,7 @@ public extension CaamDau where Base: UIScrollView {
                         return m.down_timeText?(date) ?? ""
             })
     }
-    private func headerGif(_ mj: MJRefreshGifHeader?, model:CD_MJRefreshModel?) {
+    private func headerGif(_ mj: MJRefreshGifHeader?, model:MJRefreshModel?) {
         guard let m = model  else {
             mj?.cd.setTitle().setTime().setImages()
             return
@@ -97,7 +97,7 @@ public extension CaamDau where Base: UIScrollView {
     //MARK:--- 上拉 ----------
     /// 添加默认上拉
     @discardableResult
-    func footerMJBack( _ block:@escaping MJRefreshComponentRefreshingBlock, model:CD_MJRefreshModel = CD_MJRefresh.shared.model, custom:((MJRefreshBackNormalFooter?)->Void)? = nil) -> CaamDau {
+    func footerMJBack( _ block:@escaping MJRefreshComponentRefreshingBlock, model:MJRefreshModel = MJRefresh.shared.model, custom:((MJRefreshBackNormalFooter?)->Void)? = nil) -> CaamDau {
         let mj = MJRefreshBackNormalFooter(refreshingBlock: block)
         self.footer(withBack: mj, model: model)
         custom?(mj)
@@ -106,7 +106,7 @@ public extension CaamDau where Base: UIScrollView {
     }
     /// 添加默认上拉
     @discardableResult
-    func footerMJBackWithModel( _ block:@escaping MJRefreshComponentRefreshingBlock, model:CD_MJRefreshModel = CD_MJRefresh.shared.model, custom:((MJRefreshBackNormalFooter?)->Void)? = nil) -> CaamDau {
+    func footerMJBackWithModel( _ block:@escaping MJRefreshComponentRefreshingBlock, model:MJRefreshModel = MJRefresh.shared.model, custom:((MJRefreshBackNormalFooter?)->Void)? = nil) -> CaamDau {
         let mj = MJRefreshBackNormalFooter(refreshingBlock: block)
         self.footer(withBack: mj, model: model)
         custom?(mj)
@@ -124,7 +124,7 @@ public extension CaamDau where Base: UIScrollView {
     }
     /// 添加默认上拉 - 自动刷
     @discardableResult
-    func footerMJAutoWithModel(_ block:@escaping MJRefreshComponentRefreshingBlock, model:CD_MJRefreshModel = CD_MJRefresh.shared.model, custom:((MJRefreshAutoNormalFooter?)->Void)? = nil) -> CaamDau {
+    func footerMJAutoWithModel(_ block:@escaping MJRefreshComponentRefreshingBlock, model:MJRefreshModel = MJRefresh.shared.model, custom:((MJRefreshAutoNormalFooter?)->Void)? = nil) -> CaamDau {
         let mj = MJRefreshAutoNormalFooter(refreshingBlock: block)
         self.footer(withAuto: mj, model: model)
         custom?(mj)
@@ -133,7 +133,7 @@ public extension CaamDau where Base: UIScrollView {
     }
     /// 添加Gif上拉
     @discardableResult
-    func footerMJGifBackWithModel( _ block:@escaping MJRefreshComponentRefreshingBlock, model:CD_MJRefreshModel = CD_MJRefresh.shared.model, custom:((MJRefreshBackGifFooter?)->Void)? = nil) -> CaamDau {
+    func footerMJGifBackWithModel( _ block:@escaping MJRefreshComponentRefreshingBlock, model:MJRefreshModel = MJRefresh.shared.model, custom:((MJRefreshBackGifFooter?)->Void)? = nil) -> CaamDau {
         let mj = MJRefreshBackGifFooter(refreshingBlock: block)
         self.footerGif(withBack: mj, model: model)
         custom?(mj)
@@ -151,7 +151,7 @@ public extension CaamDau where Base: UIScrollView {
     }
     /// 添加Gif上拉 - 自动刷
     @discardableResult
-    func footerMJGifAutoWithModel( _ block:@escaping MJRefreshComponentRefreshingBlock, model:CD_MJRefreshModel = CD_MJRefresh.shared.model, custom:((MJRefreshAutoGifFooter?)->Void)? = nil) -> CaamDau {
+    func footerMJGifAutoWithModel( _ block:@escaping MJRefreshComponentRefreshingBlock, model:MJRefreshModel = MJRefresh.shared.model, custom:((MJRefreshAutoGifFooter?)->Void)? = nil) -> CaamDau {
         let mj = MJRefreshAutoGifFooter(refreshingBlock: block)
         self.footerGif(withAuto: mj, model: model)
         custom?(mj)
@@ -168,7 +168,7 @@ public extension CaamDau where Base: UIScrollView {
         return self
     }
     
-    private func footer(withBack mj: MJRefreshBackNormalFooter?, model:CD_MJRefreshModel?) {
+    private func footer(withBack mj: MJRefreshBackNormalFooter?, model:MJRefreshModel?) {
         guard let m = model else {
             mj?.cd.activityStyle().setTitle()
             return
@@ -177,7 +177,7 @@ public extension CaamDau where Base: UIScrollView {
             .activityStyle(m.up_activityStyle)
         self.footer(back: mj, model: m)
     }
-    private func footer(withAuto mj: MJRefreshAutoNormalFooter?, model:CD_MJRefreshModel?) {
+    private func footer(withAuto mj: MJRefreshAutoNormalFooter?, model:MJRefreshModel?) {
         guard let m = model else {
             mj?.cd
                 .activityStyle()
@@ -189,7 +189,7 @@ public extension CaamDau where Base: UIScrollView {
         self.footer(auto: mj, model: m)
     }
     
-    private func footer(back mj: MJRefreshBackStateFooter?, model:CD_MJRefreshModel) {
+    private func footer(back mj: MJRefreshBackStateFooter?, model:MJRefreshModel) {
         mj?.cd.setTitle(isHidden: model.up_txtHidden,
                         font: model.up_txtFont,
                         color: model.up_txtColor,
@@ -200,7 +200,7 @@ public extension CaamDau where Base: UIScrollView {
                                 .refreshing(model.up_txtRefreshing),
                                 .noMoreData(model.up_txtNoMoreData)])
     }
-    private func footer(auto mj: MJRefreshAutoStateFooter?, model:CD_MJRefreshModel) {
+    private func footer(auto mj: MJRefreshAutoStateFooter?, model:MJRefreshModel) {
         mj?.cd
             .setTitle(isHidden: model.up_txtHidden,
                         font: model.up_txtFont,
@@ -217,7 +217,7 @@ public extension CaamDau where Base: UIScrollView {
             .ignoredContentInsetBottom(model.ignoredContentInsetBottom)
         
     }
-    private func footerGif(withBack mj: MJRefreshBackGifFooter?, model:CD_MJRefreshModel?) {
+    private func footerGif(withBack mj: MJRefreshBackGifFooter?, model:MJRefreshModel?) {
         guard let m = model else {
             mj?.cd.setTitle().setImages()
             return
@@ -231,7 +231,7 @@ public extension CaamDau where Base: UIScrollView {
                         .noMoreData(m.up_imgNoMoreData)])
        
     }
-    private func footerGif(withAuto mj: MJRefreshAutoGifFooter?, model:CD_MJRefreshModel?) {
+    private func footerGif(withAuto mj: MJRefreshAutoGifFooter?, model:MJRefreshModel?) {
         guard let m = model else {
             mj?.cd.setTitle().setImages()
             return
@@ -248,7 +248,7 @@ public extension CaamDau where Base: UIScrollView {
     
     /// 设置刷新状态
     @discardableResult
-    func mjRefreshTypes(_ types:[CD_MJRefreshModel.RefreshType]) -> CaamDau {
+    func mjRefreshTypes(_ types:[MJRefreshModel.RefreshType]) -> CaamDau {
         var types = types
         types.sort{$0.intValue < $1.intValue}
         for item in types {

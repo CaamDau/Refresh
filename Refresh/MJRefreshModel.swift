@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-public struct CD_MJRefreshModel {
+public struct MJRefreshModel {
     /// 下拉闲置状态 文字
     public var down_txtIdle = ""
     /// 下拉提示松开状态 文字
@@ -146,8 +146,8 @@ public struct CD_MJRefreshModel {
     }
 }
 
-public class CD_MJRefresh{
+public class MJRefresh{
     private init(){}
-    public static let shared = CD_MJRefresh()
-    public var model = CD_MJRefreshModel()
+    public static let shared = MJRefresh()
+    public var model = MJRefreshModel()
 }

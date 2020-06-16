@@ -37,7 +37,7 @@ public extension CaamDau where Base: MJRefreshStateHeader {
                   font:UIFont = UIFont.systemFont(ofSize: 14),
                   color:UIColor = UIColor.cd_hex("d3", dark: "f0"),
                   inset:CGFloat = 0,
-                  title:[CD_MJRefreshModel.TitlesEnum] = [.idle(""),
+                  title:[MJRefreshModel.TitlesEnum] = [.idle(""),
                                                           .pulling(""),
                                                           .refreshing(""),
                                                           .willRefresh(""),
@@ -95,7 +95,7 @@ public extension CaamDau where Base: MJRefreshGifHeader {
     
     /// 设置时间
     @discardableResult
-    func setImages(_ images:[CD_MJRefreshModel.ImagesEnum] = [.idle([]),
+    func setImages(_ images:[MJRefreshModel.ImagesEnum] = [.idle([]),
                                                               .pulling([]),
                                                               .willRefresh([]),
                                                               .refreshing([]),
